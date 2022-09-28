@@ -1,0 +1,32 @@
+body {
+    background-color: #2b2447;
+}
+
+h1 {
+    text-align: center;
+    color: #ffc7c4;
+    font-family: sans-serif;
+    font-size: 250%;
+}   
+
+    form {
+    margin-left: 5%;
+    text-align: left;
+    font-size: 150%;
+    font-family: sans-serif;
+    color: #ffc7c4;
+}
+
+button {
+    width: 10vw;  
+    height: 27.2px;
+}
+
+#topBar {
+    justify-content:left;
+    display: flex;
+    position: sticky;
+}
+#topBar span {
+    margin-left: 5vw;
+}
