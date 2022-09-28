@@ -1,5 +1,5 @@
 // constants
-const port = 3000;
+const port = 3001;
     //libraries
 const exp = require('constants');
 const express = require('express');
@@ -8,8 +8,8 @@ const MFA = require('mangadex-full-api');
 
     //ENVs
 require('dotenv').config();
-const password = process.env.password; 
-const username = process.env.username;
+const password = process.env.KEY_PASSWORD; 
+const username = process.env.KEY_USERNAME;
 
 // Code
     // Setup localhost
@@ -23,9 +23,12 @@ app.get('/', (req, res) => {
 const getManga = (mangaName, mangaChapter) => {
     MFA.login(username, password, 'bin/.md_cache').then(
         async () => {
-            const manga = await MFA.Manga.getByQuery(mangaName);
+            const manga = await MFA.Manga.search({
+                    title:mangaName,
+                    limit:1
+            },true)
             // finds all chapters that belongs to the found manga
-            const chapters = await manga.getFeed({
+            const chapters = await manga[0].getFeed({
                 translatedLanguage: ['en'],
                 limit: Infinity
             }, true);
@@ -38,10 +41,7 @@ const getManga = (mangaName, mangaChapter) => {
                 }
             }
             // gives the page image urls
-            const pages = await chapter.getReadablePages();
-            for (let page of pages) {
-                console.log(page);
-            }
+            const pages = await targettedChapter.getReadablePages();
             return pages;
         }   
     )
@@ -52,12 +52,13 @@ app.post('/data', async (req, res) => {
     const name = req.body.mangaName;
     const chapter = req.body.mangaChapter;
     const pageList = await getManga(name, chapter);
+    console.log(pageList);  
     console.log(name,chapter);
     res.send(JSON.stringify({
         pages: pageList
     }))
 })
 
-// getManga('pop team epic',1);
+//getManga('pop team epic',1);
 
-app.listen(port);
+app.listen(port);   
