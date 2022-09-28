@@ -5,8 +5,6 @@ const data_port = base_url + 'data'
 // Code
     // Post
 const post = (url, data) => {
-    console.log(url, data);
-    console.log(JSON.stringify(data));
     return fetch(url, {
         method: 'POST',
         mode: 'cors',
@@ -18,7 +16,7 @@ const post = (url, data) => {
         redirect: 'follow',
         referrerPolicy: 'no-referrer',
         body: JSON.stringify(data)
-    }).then((res) => res.json()).then((data) => console.log(data))
+    })
 }
 
     // Page scrolling

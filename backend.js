@@ -19,46 +19,39 @@ app.use(express.static(path.join(__dirname,'frontEnd')));
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname,'frontEnd/front.html'));
 })
-    // Getting manga page urls
-const getManga = (mangaName, mangaChapter) => {
+    // Post request
+app.post('/data', async (req, res) => {
+    const name = req.body.mangaName;
+    const chapter = req.body.mangaChapter;
+    // Get the manga panels
     MFA.login(username, password, 'bin/.md_cache').then(
         async () => {
             const manga = await MFA.Manga.search({
-                    title:mangaName,
+                    title:name,
                     limit:1
             },true)
-            // finds all chapters that belongs to the found manga
+            // Finds all chapters that belongs to the found manga
             const chapters = await manga[0].getFeed({
                 translatedLanguage: ['en'],
                 limit: Infinity
             }, true);
-            // finds the correct chapter of the manga
+            // Finds the correct chapter of the manga
             let targettedChapter;
             for (let i = 0; i < chapters.length; i++) {
-                if (chapters[i].chapter == mangaChapter) {
+                if (chapters[i].chapter == chapter) {
                     targettedChapter = chapters[i];
                     break;
                 }
             }
-            // gives the page image urls
+            // Gives the page image urls
             const pages = await targettedChapter.getReadablePages();
-            return pages;
+            // Sends the panels to the front end
+            res.send(JSON.stringify({
+                pages_urls: pages
+            }))
         }   
     )
     .catch( console.error )
-}
-    // Send data
-app.post('/data', async (req, res) => {
-    const name = req.body.mangaName;
-    const chapter = req.body.mangaChapter;
-    const pageList = await getManga(name, chapter);
-    console.log(pageList);  
-    console.log(name,chapter);
-    res.send(JSON.stringify({
-        pages: pageList
-    }))
 })
-
-//getManga('pop team epic',1);
 
 app.listen(port);   

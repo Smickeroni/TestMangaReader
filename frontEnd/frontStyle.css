@@ -30,3 +30,7 @@ button {
 #topBar span {
     margin-left: 5vw;
 }
+
+#Panel {
+    justify-content: center;
+}
