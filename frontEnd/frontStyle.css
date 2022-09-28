@@ -32,5 +32,6 @@ button {
 }
 
 #Panel {
-    justify-content: center;
+    margin-top: 2.5vw;
+    align-content: center;
 }
