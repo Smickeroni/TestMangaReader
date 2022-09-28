@@ -10,28 +10,28 @@ h1 {
 }   
 
 form {
-    margin-left: 5%;
+    margin-left: 1%;
     text-align: left;
     font-size: 150%;
     font-family: sans-serif;
     color: #ffc7c4;
 }
 
-button {
-    width: 10vw;  
-    height: 27.2px;
+#Search {
+    width: 7vw;  
+    height: 3.8vw;      
+    margin-left: 1%;
 }
 
 #topBar {
-    justify-content:left;
+    justify-content: left;
     display: flex;
-    position: sticky;
-}
-#topBar span {
-    margin-left: 5vw;
+    margin-right: 2.5vw;
 }
 
 #Panel {
-    margin-top: 2.5vw;
-    align-content: center;
+    display: flex;
+    width: 30%;
+    height: auto;
+    margin-left:6%;
 }
