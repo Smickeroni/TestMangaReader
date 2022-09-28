@@ -45,4 +45,5 @@ const sendSearchRequest = async () => {
         mangaName: Name.value,     
         mangaChapter: Chapter.value 
    });
+   console.log((await res).text());
 }
