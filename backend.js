@@ -33,7 +33,7 @@ app.post('/data', async (req, res) => {
             // Finds all chapters that belongs to the found manga
             const chapters = await manga[0].getFeed({
                 translatedLanguage: ['en'],
-                limit: Infinity
+                limit: Infinity 
             }, true);
             // Finds the correct chapter of the manga
             let targettedChapter;

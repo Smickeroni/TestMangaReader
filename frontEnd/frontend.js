@@ -59,8 +59,8 @@ const sendSearchRequest = async () => {
     const res = await post(data_port, {
         mangaName: Name.value,     
         mangaChapter: Chapter.value 
-   });
-   const url_list = await res.text();
-   const pages = JSON.parse(url_list);
-   setupPages(pages.pages_urls);
+    });
+    const url_list = await res.text();
+    const pages = JSON.parse(url_list);
+    setupPages(pages.pages_urls);
 }
