@@ -6,32 +6,40 @@ h1 {
     text-align: center;
     color: #ffc7c4;
     font-family: sans-serif;
-    font-size: 250%;
+    font-size: 5vw;
 }   
 
 form {
-    margin-left: 1%;
+    margin-left: 1vw;
     text-align: left;
-    font-size: 150%;
+    font-size: 1.5vw;
     font-family: sans-serif;
     color: #ffc7c4;
 }
 
 #Search {
-    width: 7vw;  
+    width: 10vw;  
     height: 3.8vw;      
-    margin-left: 1%;
+    margin-left: 1%;    
+    font-size: 2.5vw;
 }
 
 #topBar {
     justify-content: left;
     display: flex;
-    margin-right: 2.5vw;
 }
 
 #Panel {
     display: flex;
     width: 30%;
     height: auto;
-    margin-left:6%;
+    margin-left:3%;
+}
+
+#sideText {
+    display: flex;
+    margin-left: 2vw;
+    font-size: 1.5vw;
+    color: #ffc7c4;
+    font-family: "Comic Sans MS";
 }
